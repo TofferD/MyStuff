@@ -1,6 +1,4 @@
-﻿using System;
-
-using LeetCodeStuff;
+﻿using LeetCodeStuff;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LeetCodeStuffTests
