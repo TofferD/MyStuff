@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/LeetCodeStuff/.vs/LeetCodeStuff/v15/Server/sqlite3
+/LeetCodeStuff/bin/Debug
+/LeetCodeStuff/LeetCodeStuffTests/bin/Debug
+/LeetCodeStuff/LeetCodeStuffTests/obj/Debug
+/LeetCodeStuff/obj/Debug
