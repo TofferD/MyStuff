@@ -58,6 +58,20 @@ namespace LeetCodeStuff
             return returnNode;
         }
 
+        public static int HammingDistance(int x, int y)
+        {
+            int z = x ^ y;
+            int count = 0;
+
+            while (z != 0)
+            {
+                count++;
+                z &= (z - 1);
+            }
+
+            return count;
+        }
+
         public static void SwapPairs(ref ListNode node)
         {
             if (node == null || node.Next == null)

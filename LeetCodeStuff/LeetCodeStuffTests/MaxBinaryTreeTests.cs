@@ -7,7 +7,7 @@ namespace LeetCodeStuffTests
     public class MaxBinaryTreeTests
     {
         [TestMethod]
-        public void EmptyArrayReturnsNullResultTest()
+        public void MBTEmptyArrayReturnsNullResultTest()
         {
             TreeNode result = Program.ConstructMaximumBinaryTree(new int[] { });
 
@@ -15,7 +15,7 @@ namespace LeetCodeStuffTests
         }
 
         [TestMethod]
-        public void NullArrayReturnsNullResultTest()
+        public void MBTNullArrayReturnsNullResultTest()
         {
             TreeNode result = Program.ConstructMaximumBinaryTree(null);
 
@@ -23,7 +23,7 @@ namespace LeetCodeStuffTests
         }
 
         [TestMethod]
-        public void TreeNodeFromKnownPatternTest()
+        public void MBTTreeNodeFromKnownPatternTest()
         {
             TreeNode result = Program.ConstructMaximumBinaryTree(new int[]{ 3, 2, 1, 6, 0, 5 });
 

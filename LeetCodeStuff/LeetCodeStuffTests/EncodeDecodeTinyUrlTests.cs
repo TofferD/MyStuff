@@ -7,7 +7,7 @@ namespace LeetCodeStuffTests
     public class EncodeDecodeTinyUrlTests
     {
         [TestMethod]
-        public void EncodeEmptyOrNullUrlReturnsEmptyStringTest()
+        public void EDTEncodeEmptyOrNullUrlReturnsEmptyStringTest()
         {
             EncodeDecodeTinyUrl testObj = new EncodeDecodeTinyUrl();
 
@@ -16,7 +16,7 @@ namespace LeetCodeStuffTests
         }
 
         [TestMethod]
-        public void DecodeEmptyOrNullUrlReturnsEmptyStringTest()
+        public void EDTDecodeEmptyOrNullUrlReturnsEmptyStringTest()
         {
             EncodeDecodeTinyUrl testObj = new EncodeDecodeTinyUrl();
 
@@ -25,7 +25,7 @@ namespace LeetCodeStuffTests
         }
 
         [TestMethod]
-        public void UrlIsShorterOrEqualThanTinyReturnsOriginalUrlTest()
+        public void EDTUrlIsShorterOrEqualThanTinyReturnsOriginalUrlTest()
         {
             string littleUrl = "a";
             string mediumUrl = "bbbbbbbbbbbbbbbbbbbbbbbbbbb";
@@ -40,7 +40,7 @@ namespace LeetCodeStuffTests
         }
 
         [TestMethod]
-        public void UrlIsLongerThanTinyReturnsTinyUrlTest()
+        public void EDTUrlIsLongerThanTinyReturnsTinyUrlTest()
         {
             string bigUrl = "cccccccccccccccccccccccccccc";
             string superBigUrl = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
@@ -55,7 +55,7 @@ namespace LeetCodeStuffTests
         }
 
         [TestMethod]
-        public void DecodedTinyReturnsOriginalUrlTest()
+        public void EDTDecodedTinyReturnsOriginalUrlTest()
         {
             EncodeDecodeTinyUrl testObj = new EncodeDecodeTinyUrl();
 
@@ -66,7 +66,7 @@ namespace LeetCodeStuffTests
         }
 
         [TestMethod]
-        public void DecodedInvalidTinyReturnsEmptyStringTest()
+        public void EDTDecodedInvalidTinyReturnsEmptyStringTest()
         {
             EncodeDecodeTinyUrl testObj = new EncodeDecodeTinyUrl();
 
