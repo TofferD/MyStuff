@@ -4,13 +4,6 @@ using System.Linq;
 
 namespace LeetCodeStuff
 {
-    public class ListNode
-    {
-        public int val;
-        public ListNode next;
-        public ListNode(int x) { val = x; }
-    }
-
     public class Program
     {
         public static void Main(string[] args) {}
@@ -35,22 +28,52 @@ namespace LeetCodeStuff
             return jewelCount;
         }
 
+        public static TreeNode ConstructMaximumBinaryTree(int[] nums)
+        {
+            if (nums == null || nums.Length < 1)
+            {
+                return null;
+            }
+
+            int highestIndex = 0;
+            int highest = nums[0];
+
+            for (int i = 1; i < nums.Length; i++)
+            {
+                if (nums[i] > highest)
+                {
+                    highest = nums[i];
+                    highestIndex = i;
+                }
+            }
+
+            TreeNode returnNode = new TreeNode(highest);
+            int[] leftArray = new int[highestIndex];
+            int[] rightArray = new int[nums.Length - highestIndex - 1];
+            Array.Copy(nums, 0, leftArray, 0, highestIndex);
+            Array.Copy(nums, highestIndex + 1, rightArray, 0, nums.Length - highestIndex - 1);
+            returnNode.Left = ConstructMaximumBinaryTree(leftArray);
+            returnNode.Right = ConstructMaximumBinaryTree(rightArray);
+
+            return returnNode;
+        }
+
         public static void SwapPairs(ref ListNode node)
         {
-            if (node == null || node.next == null)
+            if (node == null || node.Next == null)
             {
                 return;
             }
 
             ListNode node1 = node; // Node 1 -> A 
-            ListNode node2 = node.next; // node 2 -> B
-            ListNode node3 = node.next.next; // Node 3 -> C
+            ListNode node2 = node.Next; // node 2 -> B
+            ListNode node3 = node.Next.Next; // Node 3 -> C
 
             node = node2; //Node-> B
-            node.next = node1; // B->A
-            node.next.next = node3;// B->A->C->D
+            node.Next = node1; // B->A
+            node.Next.Next = node3;// B->A->C->D
 
-            SwapPairs(ref node.next.next);
+            SwapPairs(ref node.Next.Next);
         }
 
 
@@ -85,13 +108,13 @@ namespace LeetCodeStuff
 
         public static void DeleteNode(ListNode node)
         {
-            if (node.next == null)
+            if (node.Next == null)
             {
                 return;
             }
 
-            node.val = node.next.val;
-            node.next = node.next.next;
+            node.Val = node.Next.Val;
+            node.Next = node.Next.Next;
         }
 
         public static string ReverseString(string s)
@@ -142,13 +165,13 @@ namespace LeetCodeStuff
 
             ListNode tempNode1 = l1 == null ? new ListNode(0) : l1;
             ListNode tempNode2 = l2 == null ? new ListNode(0) : l2;
-            int addNodes = tempNode1.val + tempNode2.val;
+            int addNodes = tempNode1.Val + tempNode2.Val;
             ListNode returnNode = new ListNode(addNodes % 10);
             bool remainder = addNodes >= 10;
 
-            returnNode.next = AddTwoNumbers(tempNode1.next, tempNode2.next);
-            ListNode remainderNode = returnNode.next;
-            ListNode previousNode = returnNode.next;
+            returnNode.Next = AddTwoNumbers(tempNode1.Next, tempNode2.Next);
+            ListNode remainderNode = returnNode.Next;
+            ListNode previousNode = returnNode.Next;
 
             while (remainder)
             {
@@ -158,22 +181,22 @@ namespace LeetCodeStuff
 
                     if (previousNode != null)
                     {
-                        previousNode.next = remainderNode;
+                        previousNode.Next = remainderNode;
                     }
                     else
                     {
-                        returnNode.next = remainderNode;
+                        returnNode.Next = remainderNode;
                     }
                 }
 
-                remainderNode.val = remainderNode.val + 1;
+                remainderNode.Val = remainderNode.Val + 1;
 
-                if (remainderNode.val == 10)
+                if (remainderNode.Val == 10)
                 {
                     previousNode = remainderNode;
 
-                    remainderNode.val = 0;
-                    remainderNode = remainderNode.next;
+                    remainderNode.Val = 0;
+                    remainderNode = remainderNode.Next;
                 }
                 else
                 {
