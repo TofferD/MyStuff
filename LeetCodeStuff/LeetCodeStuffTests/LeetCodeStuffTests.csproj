@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EncodeDecodeTinyUrlTests.cs" />
+    <Compile Include="HammingDistanceTests.cs" />
     <Compile Include="JewelsAndStonesTests.cs" />
     <Compile Include="MaxBinaryTreeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
