@@ -8,24 +8,53 @@ namespace LeetCodeStuff
     {
         private string RandomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
+        private string BaseUrl = @"http://tofferurl.com/";
+
         public Dictionary<string, string> Urls = new Dictionary<string, string>();
 
         // Encodes a URL to a shortened URL
         public string encode(string longUrl)
         {
-            string tinyKey = generateRndKey();
-            Urls.Add(tinyKey, longUrl);
-            return "http://tofferurl.com/" + tinyKey;
+            if (string.IsNullOrEmpty(longUrl))
+            {
+                return string.Empty;
+            }
+
+            string tinyKey = GenerateRndKey();
+
+            if ((BaseUrl.Length + tinyKey.Length) >= longUrl.Length)
+            {
+                return longUrl;
+            }
+            else
+            {
+                Urls.Add(tinyKey, longUrl);
+            }
+
+            return BaseUrl + tinyKey;
         }
 
         // Decodes a shortened URL to its original URL.
         public string decode(string shortUrl)
         {
+            if (string.IsNullOrEmpty(shortUrl))
+            {
+                return string.Empty;
+            }
+
             string key = shortUrl.Replace("http://tofferurl.com/", "");
-            return Urls[key];
+
+            if (Urls.Keys.Contains(key))
+            {
+                return Urls[key];
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
 
-        private string generateRndKey()
+        private string GenerateRndKey()
         {
             Random rnd = new Random();
             string key = string.Empty;
@@ -37,7 +66,7 @@ namespace LeetCodeStuff
 
             if (Urls.Keys.Contains(key))
             {
-                key = generateRndKey();
+                key = GenerateRndKey();
             }
 
             return key;
