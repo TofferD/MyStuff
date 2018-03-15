@@ -72,6 +72,13 @@ namespace LeetCodeStuff
             return count;
         }
 
+        public static IList<IList<int>> AllPathsSourceTarget(int[][] graph)
+        {
+            List<List<int>> returnList = new List<List<int>>();
+
+            return (IList<IList<int>>)returnList;
+        }
+
         public static void SwapPairs(ref ListNode node)
         {
             if (node == null || node.Next == null)
