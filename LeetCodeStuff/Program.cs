@@ -79,6 +79,48 @@ namespace LeetCodeStuff
             return (IList<IList<int>>)returnList;
         }
 
+        public static bool JudgeCircle(string moves)
+        {
+            if (string.IsNullOrEmpty(moves))
+            {
+                return true;
+            }
+
+            string loweredMoves = moves.ToLower();
+
+            int lr = 0;
+            int ud = 0;
+
+            for (int i = 0; i < loweredMoves.Length; i++)
+            {
+                switch (loweredMoves[i])
+                {
+                    case 'u':
+                        {
+                            ud++;
+                            break;
+                        }
+                    case 'd':
+                        {
+                            ud--;
+                            break;
+                        }
+                    case 'r':
+                        {
+                            lr++;
+                            break;
+                        }
+                    case 'l':
+                        {
+                            lr--;
+                            break;
+                        }
+                }
+            }
+
+            return (lr == 0) && (ud == 0);
+        }
+
         public static void SwapPairs(ref ListNode node)
         {
             if (node == null || node.Next == null)
