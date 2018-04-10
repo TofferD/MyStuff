@@ -1,5 +1,65 @@
 <# 
  .Synopsis
+  converts a generic powershell object into a hashtable
+
+ .Description
+  converts a generic powershell object into a hashtable
+
+ .Parameter PSObject
+  a generic powershell object
+
+ .Example
+   Convert-PSObjToHash -PSObject $somePSObject
+#>
+function Convert-PSObjToHash
+{
+    param (
+        [Parameter(Mandatory = $true)]
+        $PSObject
+    )
+    
+    $convertedHash = @{}
+
+    $PSObject.PSObject.Properties | ForEach-Object {
+        if ($_.Value.GetType().Name -eq "String")
+        {
+            $convertedHash.Add($_.Name, $_.Value)
+        }
+        else
+        {
+            $convertedSubPSObj = ConvertPSObjToHash $_.Value
+            $convertedHash.Add($_.Name, $convertedSubPSObj)
+        }
+    }
+
+    return $convertedHash
+}
+
+<# 
+ .Synopsis
+  Generates a random string of N length
+
+ .Description
+  Generates a random string of N length using only the following characters:
+  ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
+
+ .Parameter StringLength
+  the length of the random string to create
+
+ .Example
+   Get-RandomString -StringLength 7
+#>
+function Get-RandomString {
+    param (
+        # Parameter help description
+        [Parameter(Mandatory=$true)]
+        [int]
+        $StringLength
+    )
+}
+
+<# 
+ .Synopsis
   Parses INI or INF files into a Hashtable
 
  .Description
@@ -13,7 +73,7 @@
 #>
 function Get-IniInfContent {
     param (
-        [parameter(mandatory=$true)]
+        [Parameter(Mandatory=$true)]
         [string]
         $FilePath
     )
