@@ -28,36 +28,6 @@ namespace LeetCodeStuff
             return jewelCount;
         }
 
-        public static TreeNode ConstructMaximumBinaryTree(int[] nums)
-        {
-            if (nums == null || nums.Length < 1)
-            {
-                return null;
-            }
-
-            int highestIndex = 0;
-            int highest = nums[0];
-
-            for (int i = 1; i < nums.Length; i++)
-            {
-                if (nums[i] > highest)
-                {
-                    highest = nums[i];
-                    highestIndex = i;
-                }
-            }
-
-            TreeNode returnNode = new TreeNode(highest);
-            int[] leftArray = new int[highestIndex];
-            int[] rightArray = new int[nums.Length - highestIndex - 1];
-            Array.Copy(nums, 0, leftArray, 0, highestIndex);
-            Array.Copy(nums, highestIndex + 1, rightArray, 0, nums.Length - highestIndex - 1);
-            returnNode.Left = ConstructMaximumBinaryTree(leftArray);
-            returnNode.Right = ConstructMaximumBinaryTree(rightArray);
-
-            return returnNode;
-        }
-
         public static int HammingDistance(int x, int y)
         {
             int z = x ^ y;
@@ -139,47 +109,6 @@ namespace LeetCodeStuff
             SwapPairs(ref node.Next.Next);
         }
 
-
-    //    // Input A->B->C->D
-    //    // Output B->A->D->C
-    //    /*
-    //    * public class ListNode {
-    //     *     public int val;
-    //     *     public ListNode next;
-    //     *     public ListNode(int x) { val = x; }
-    //     * }
-
-    //    */
-
-    //    public void SwapPairs(ListNode node, out ListNode newHead)
-    //    {
-    //        if (node == null || node.next == null)
-    //        {
-    //            return;
-    //        }
-
-    //        ListNode node1 = node; // Node 1 -> A 
-    //        ListNode node2 = node.next; // node 2 -> B
-    //        ListNode node3 = node.next.next; // Node 3 -> C
-    
-    //out newHead = node2; //Node-> B
-    //        node.next = node1 // B->A
-    //node.next.next = node3;// B->A->C->D
-
-    //        SwapPairs(node.next.next);
-    //    }
-
-        public static void DeleteNode(ListNode node)
-        {
-            if (node.Next == null)
-            {
-                return;
-            }
-
-            node.Val = node.Next.Val;
-            node.Next = node.Next.Next;
-        }
-
         public static string ReverseString(string s)
         {
             if (s == null || s.Length == 0)
@@ -217,57 +146,6 @@ namespace LeetCodeStuff
             }
 
             return nextIndex;
-        }
-
-        public static ListNode AddTwoNumbers(ListNode l1, ListNode l2)
-        {
-            if (l1 == null && l2 == null)
-            {
-                return null;
-            }
-
-            ListNode tempNode1 = l1 == null ? new ListNode(0) : l1;
-            ListNode tempNode2 = l2 == null ? new ListNode(0) : l2;
-            int addNodes = tempNode1.Val + tempNode2.Val;
-            ListNode returnNode = new ListNode(addNodes % 10);
-            bool remainder = addNodes >= 10;
-
-            returnNode.Next = AddTwoNumbers(tempNode1.Next, tempNode2.Next);
-            ListNode remainderNode = returnNode.Next;
-            ListNode previousNode = returnNode.Next;
-
-            while (remainder)
-            {
-                if (remainderNode == null)
-                {
-                    remainderNode = new ListNode(0);
-
-                    if (previousNode != null)
-                    {
-                        previousNode.Next = remainderNode;
-                    }
-                    else
-                    {
-                        returnNode.Next = remainderNode;
-                    }
-                }
-
-                remainderNode.Val = remainderNode.Val + 1;
-
-                if (remainderNode.Val == 10)
-                {
-                    previousNode = remainderNode;
-
-                    remainderNode.Val = 0;
-                    remainderNode = remainderNode.Next;
-                }
-                else
-                {
-                    remainder = false;
-                }
-            }
-
-            return returnNode;
         }
 
         public static int LengthOfLongestSubstring(string s)
