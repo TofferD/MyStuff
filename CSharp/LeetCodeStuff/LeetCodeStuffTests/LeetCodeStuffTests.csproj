@@ -57,6 +57,7 @@
     <Compile Include="JudgeCircleTests.cs" />
     <Compile Include="ListNodeTests.cs" />
     <Compile Include="MaxBinaryTreeTests.cs" />
+    <Compile Include="MergeTwoBinaryTreesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
