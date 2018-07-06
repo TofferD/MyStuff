@@ -55,6 +55,7 @@
     <Compile Include="HammingDistanceTests.cs" />
     <Compile Include="JewelsAndStonesTests.cs" />
     <Compile Include="JudgeCircleTests.cs" />
+    <Compile Include="ListNodeTests.cs" />
     <Compile Include="MaxBinaryTreeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
