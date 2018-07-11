@@ -53,6 +53,7 @@
     <Compile Include="AllPathsFromSourceToTargetTests.cs" />
     <Compile Include="EncodeDecodeTinyUrlTests.cs" />
     <Compile Include="HammingDistanceTests.cs" />
+    <Compile Include="HashSetTests.cs" />
     <Compile Include="JewelsAndStonesTests.cs" />
     <Compile Include="JudgeCircleTests.cs" />
     <Compile Include="ListNodeTests.cs" />

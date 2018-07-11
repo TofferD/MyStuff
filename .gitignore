@@ -6,3 +6,6 @@
 bin/
 obj/
 packages/
+*.filters
+*.user
+debug/
