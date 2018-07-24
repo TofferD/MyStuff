@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ToffAnimal\ToffAnimal.csproj" />
+    <ProjectReference Include="..\Toffoid\Toffoid.csproj" />
+    <ProjectReference Include="..\ToffPlant\ToffPlant.csproj" />
+  </ItemGroup>
+
+</Project>
